@@ -41,7 +41,7 @@ $stats = getCardStats('pioneers_cards');
     <!-- Figma Stats Cards -->
     <div class="stats-grid">
         <!-- تسجيلات اليوم -->
-        <div class="stat-card">
+        <a href="?date_from=<?= date('Y-m-d') ?>" class="stat-card <?= $dateFrom == date('Y-m-d') ? 'active' : '' ?>" style="text-decoration: none; color: inherit;">
             <div class="stat-card-label">تسجيلات اليوم</div>
             <div class="stat-card-row">
                 <div class="stat-card-val"><?= number_format($stats['today']) ?></div>
@@ -49,10 +49,10 @@ $stats = getCardStats('pioneers_cards');
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
                 </div>
             </div>
-        </div>
+        </a>
 
         <!-- إناث -->
-        <div class="stat-card">
+        <a href="?gender=female" class="stat-card <?= $genderFilter == 'female' ? 'active' : '' ?>" style="text-decoration: none; color: inherit;">
             <div class="stat-card-label">إناث</div>
             <div class="stat-card-row">
                 <div class="stat-card-val"><?= number_format($stats['females']) ?></div>
@@ -60,10 +60,10 @@ $stats = getCardStats('pioneers_cards');
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="5"></circle><path d="M12 12v9"></path><path d="M9 17h6"></path></svg>
                 </div>
             </div>
-        </div>
+        </a>
 
         <!-- ذكور -->
-        <div class="stat-card">
+        <a href="?gender=male" class="stat-card <?= $genderFilter == 'male' ? 'active' : '' ?>" style="text-decoration: none; color: inherit;">
             <div class="stat-card-label">ذكور</div>
             <div class="stat-card-row">
                 <div class="stat-card-val"><?= number_format($stats['males']) ?></div>
@@ -71,10 +71,10 @@ $stats = getCardStats('pioneers_cards');
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="14" r="5"></circle><path d="M19 5L13.5 10.5"></path><path d="M14 5h5v5"></path></svg>
                 </div>
             </div>
-        </div>
+        </a>
 
         <!-- إجمالي المسجلين -->
-        <div class="stat-card">
+        <a href="pioneers.php" class="stat-card <?= (!$genderFilter && !$dateFrom) ? 'active' : '' ?>" style="text-decoration: none; color: inherit;">
             <div class="stat-card-label">إجمالي المسجلين</div>
             <div class="stat-card-row">
                 <div class="stat-card-val"><?= number_format($stats['total']) ?></div>
@@ -82,8 +82,12 @@ $stats = getCardStats('pioneers_cards');
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
+
+    <style>
+        .stat-card.active { border: 2px solid var(--color-accent); background: #fdfaf3; }
+    </style>
 
     <div class="admin-table-wrap">
         <table>

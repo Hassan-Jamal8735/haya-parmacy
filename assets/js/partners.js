@@ -36,13 +36,33 @@
 
         if (!overlay) return;
 
-        // Automatically show modal on page load (if not already closed this session)
+        // Choice Buttons (Gender selection)
+        document.querySelectorAll('.option-btn-choice').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetId = this.dataset.target;
+                const value = this.dataset.value;
+                const input = document.getElementById(targetId);
+                
+                this.parentElement.querySelectorAll('.option-btn-choice').forEach(b => {
+                    b.style.background = '#fff';
+                    b.style.color = '#333';
+                    b.style.borderColor = '#ddd';
+                });
+                this.style.background = '#005445';
+                this.style.color = '#fff';
+                this.style.borderColor = '#005445';
+                
+                if (input) input.value = value;
+            });
+        });
+
+        // Automatically show modal on page load
         if (!sessionStorage.getItem('haya_partners_modal_shown')) {
             setTimeout(function() {
                 overlay.classList.add('open');
                 document.body.style.overflow = 'hidden';
                 sessionStorage.setItem('haya_partners_modal_shown', '1');
-            }, 1500); // 1.5s delay for smooth entry
+            }, 1500);
         }
 
         openBtns.forEach(function (btn) {
@@ -123,6 +143,8 @@
         var valid  = true;
         var name   = document.getElementById('reg_name');
         var mobile = document.getElementById('reg_mobile');
+        var gender = document.getElementById('reg_gender');
+        var dob    = document.getElementById('reg_dob');
 
         if (!name || !name.value.trim() || name.value.trim().length < 3) {
             showError('err_name', 'الاسم الكامل مطلوب (3 أحرف على الأقل)');
@@ -130,6 +152,14 @@
         }
         if (!mobile || !/^[0-9+]{7,15}$/.test(mobile.value.trim())) {
             showError('err_mobile', 'أدخل رقم هاتف صحيح');
+            valid = false;
+        }
+        if (!gender || !gender.value) {
+            alert('يرجى اختيار الجنس');
+            valid = false;
+        }
+        if (!dob || !dob.value) {
+            alert('يرجى اختيار تاريخ الميلاد');
             valid = false;
         }
         return valid;
@@ -154,8 +184,45 @@
         if (ge) { ge.textContent = msg; ge.style.display = 'block'; }
     }
 
+    function setupCountdown() {
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() + 7); // 7 days from now
+        targetDate.setHours(23, 59, 59);
+
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minsEl = document.getElementById('mins');
+        const secsEl = document.getElementById('secs');
+
+        if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = targetDate.getTime() - now;
+
+            if (distance < 0) {
+                clearInterval(interval);
+                return;
+            }
+
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+            daysEl.textContent = String(d).padStart(2, '0');
+            hoursEl.textContent = String(h).padStart(2, '0');
+            minsEl.textContent = String(m).padStart(2, '0');
+            secsEl.textContent = String(s).padStart(2, '0');
+        }
+
+        const interval = setInterval(updateTimer, 1000);
+        updateTimer();
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         initModal();
+        setupCountdown();
     });
 
 }());

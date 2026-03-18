@@ -40,6 +40,27 @@
 
         if (!overlay) return;
 
+        // Choice Buttons (Gender selection)
+        document.querySelectorAll('.option-btn-choice').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetId = this.dataset.target;
+                const value = this.dataset.value;
+                const input = document.getElementById(targetId);
+                
+                // Toggle active state
+                this.parentElement.querySelectorAll('.option-btn-choice').forEach(b => {
+                    b.style.background = '#fff';
+                    b.style.color = '#333';
+                    b.style.borderColor = '#ddd';
+                });
+                this.style.background = '#005445';
+                this.style.color = '#fff';
+                this.style.borderColor = '#005445';
+                
+                if (input) input.value = value;
+            });
+        });
+
         // Open modal
         openBtns.forEach(function (btn) {
             btn.addEventListener('click', function (e) {
@@ -130,12 +151,23 @@
         var valid = true;
         var name    = document.getElementById('reg_name');
         var mobile  = document.getElementById('reg_mobile');
+        var gender  = document.getElementById('reg_gender');
+        var dob     = document.getElementById('reg_dob');
 
         if (!name || !name.value.trim()) {
             valid = false;
         }
 
         if (!mobile || !mobile.value.trim()) {
+            valid = false;
+        }
+
+        if (!gender || !gender.value) {
+            alert('يرجى اختيار الجنس');
+            valid = false;
+        }
+
+        if (!dob || !dob.value) {
             valid = false;
         }
 

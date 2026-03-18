@@ -14,6 +14,7 @@ $siteUrl   = defined('SITE_URL') ? SITE_URL : '/Haya-Pharmacy';
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/x-icon" href="<?= $siteUrl ?>/favicon.ico">
     <link rel="icon" type="image/png" href="<?= SITE_URL ?>/assets/images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="<?= $siteUrl ?>/assets/css/main.css">
     <?php if (!empty($extraCss)): ?>
         <?php foreach ($extraCss as $css): ?>

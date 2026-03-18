@@ -36,7 +36,7 @@ include __DIR__ . '/../includes/header.php';
     <div class="hero-content-wrapper">
         <div class="hero-left-dr-wrap">
             <div class="hero-circle-frame">
-                <img src="<?= SITE_URL ?>/assets/images/Frame 1.svg" alt="Decoration" class="frame-img">
+                <img src="<?= SITE_URL ?>/assets/images/Frame%201.svg" alt="Decoration" class="frame-img">
             </div>
             <img src="<?= SITE_URL ?>/assets/images/doctor.svg" alt="Doctor" class="hero-dr-img-main">
         </div>
@@ -58,7 +58,7 @@ include __DIR__ . '/../includes/header.php';
                  <!-- Reusing the doctor image or a suitable placeholder if no specific asset found -->
                  <img src="<?= SITE_URL ?>/assets/images/doctor.svg" alt="Mission" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9;">
                  <div class="mission-icon-badge">
-                     <img src="<?= SITE_URL ?>/assets/images/pea .svg" alt="Icon">
+                     <img src="<?= SITE_URL ?>/assets/images/pea%20.svg" alt="Icon">
                  </div>
             </div>
         </div>
@@ -127,7 +127,7 @@ include __DIR__ . '/../includes/header.php';
         <!-- Card 1 -->
         <div class="p-info-card">
             <div class="p-info-img-wrap">
-                <img src="https://images.unsplash.com/photo-1576091160550-217359f4b010?auto=format&fit=crop&w=600&q=80" alt="Consultation">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71f1e598c6?auto=format&fit=crop&w=600&q=80" alt="Consultation">
             </div>
             <div class="p-info-content">
                 <h3>استشارة مجانية من الخبراء</h3>
@@ -160,7 +160,7 @@ include __DIR__ . '/../includes/header.php';
         <!-- Card 4 -->
         <div class="p-info-card">
             <div class="p-info-img-wrap">
-                <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=600&q=80" alt="Exclusive">
+                <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=600&q=80" alt="Exclusive">
             </div>
             <div class="p-info-content">
                 <h3>العروض الحصرية</h3>
@@ -182,7 +182,7 @@ include __DIR__ . '/../includes/header.php';
         <!-- Card 6 -->
         <div class="p-info-card">
             <div class="p-info-img-wrap">
-                <img src="https://images.unsplash.com/photo-1454165833767-027eeef1596e?auto=format&fit=crop&w=600&q=80" alt="Privacy">
+                <img src="https://images.unsplash.com/photo-1633265486232-442b84175059?auto=format&fit=crop&w=600&q=80" alt="Privacy">
             </div>
             <div class="p-info-content">
                 <h3>الأمان والخصوصية</h3>
@@ -234,8 +234,27 @@ include __DIR__ . '/../includes/header.php';
         <button id="modalClose" class="modal-close-btn" aria-label="Close"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
         <div id="modalFormWrap">
             <form id="regForm" method="POST" novalidate>
-                <div class="modal-form-group"><label class="modal-label">الاسم</label><input type="text" id="reg_name" name="reg_name" class="modal-input" placeholder="محمد" required></div>
-                <div class="modal-form-group"><label class="modal-label">رقم الهاتف</label><input type="tel" id="reg_mobile" name="reg_mobile" class="modal-input" placeholder="+20 10xxxxxxxx" required></div>
+                <div class="modal-form-group">
+                    <label class="modal-label">الاسم</label>
+                    <input type="text" id="reg_name" name="reg_name" class="modal-input" placeholder="محمد" required>
+                </div>
+                <div class="modal-form-group">
+                    <label class="modal-label">رقم الهاتف</label>
+                    <input type="tel" id="reg_mobile" name="reg_mobile" class="modal-input" placeholder="+20 10xxxxxxxx" required>
+                </div>
+                <!-- Added Gender and DOB -->
+                <div class="modal-form-group">
+                    <label class="modal-label">الجنس</label>
+                    <div class="options-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <button type="button" class="option-btn-choice" data-target="reg_gender" data-value="male" style="background:#fff; border:1px solid #ddd; padding:0.8rem; border-radius:12px; cursor:pointer;">ذكر</button>
+                        <button type="button" class="option-btn-choice" data-target="reg_gender" data-value="female" style="background:#fff; border:1px solid #ddd; padding:0.8rem; border-radius:12px; cursor:pointer;">أنثى</button>
+                    </div>
+                    <input type="hidden" id="reg_gender" name="reg_gender" required>
+                </div>
+                <div class="modal-form-group">
+                    <label class="modal-label">تاريخ الميلاد (أو العمر)</label>
+                    <input type="date" id="reg_dob" name="reg_dob" class="modal-input" required>
+                </div>
                 <button type="submit" class="modal-submit-btn form-submit">سجل الآن</button>
             </form>
         </div>

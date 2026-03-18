@@ -35,13 +35,26 @@
     --shadow-md:             0 8px 24px rgba(0,0,0,0.12);
     --shadow-lg:             0 20px 40px rgba(27, 67, 50, 0.15);
     --shadow-gold:           0 8px 30px hsl(36, 42%, 55%, 0.4);
+
+    --haya-green: #015645;
+    --haya-gold: #BB9960;
+    --haya-beige: #E9E0D9;
+    --haya-white: #FFFFFF;
+    --haya-black: #000000;
+    --haya-gray: #F5F5F5;
+    
+    --font-arabic: 'Almarai', sans-serif;
+    --font-english: 'Inter', sans-serif;
+    
+    --shadow-premium: 0 20px 50px rgba(0,0,0,0.08);
+    --radius-lg: 2.5rem;
 }
 
 /* ── Reset & Base ────────────────────────────────────────────── */
 *, *::before, *::after {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -49,14 +62,14 @@ html {
 }
 
 body {
-    font-family:    var(--font-main);
-    background:     var(--color-bg);
-    color:          var(--color-fg);
+    font-family: var(--font-arabic);
+    background-color: var(--haya-white);
+    color: var(--haya-black);
+    overflow-x: hidden;
     direction:      rtl;
     text-align:     right;
     line-height:    1.7;
     font-size:      16px;
-    overflow-x:     hidden;
 }
 
 img {
@@ -97,6 +110,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-between;
     padding: 1.25rem 4rem;
     background: hsla(30, 25%, 93%, 0.5);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     transition: all 0.5s ease;
 }
@@ -104,7 +118,9 @@ h1, h2, h3, h4, h5, h6 {
 .site-header.scrolled {
     padding: 0.75rem 4rem;
     background: hsla(30, 25%, 93%, 0.3);
-    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     box-shadow: 0 1px 20px rgba(0,0,0,0.08);
     border-bottom: 1px solid hsla(30, 15%, 82%, 0.5);
 }
@@ -187,6 +203,7 @@ h1, h2, h3, h4, h5, h6 {
     inset: 0;
     z-index: 200;  /* above header (50), below modal (1000) */
     background: hsla(153, 55%, 18%, 0.97);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     flex-direction: column;
     align-items: center;
@@ -727,6 +744,7 @@ h1, h2, h3, h4, h5, h6 {
     inset: 0;
     z-index: 1000;
     background: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
     align-items: center;
     justify-content: center;
@@ -1243,12 +1261,8 @@ select.form-control {
 }
 
 .partners-hero {
-    background-color: #ffffff;
-    background-image: url('../images/pea .svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 500px;
+    background-color: #fcf8f4; /* Sophisticated Tan/Beige */
+    min-height: 600px;
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -1256,77 +1270,115 @@ select.form-control {
     align-items: center;
 }
 
+/* Organic Leaf Watermarks (Figma Exact Match) */
+.hero-watermark-1, .hero-watermark-2 {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background-image: url('../images/pea .svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.05;
+    z-index: 1;
+    pointer-events: none;
+}
+.hero-watermark-1 { top: -200px; right: -200px; transform: rotate(15deg); }
+.hero-watermark-2 { bottom: -200px; left: -200px; transform: rotate(-15deg); }
+
 .hero-arc-element {
     position: absolute;
-    right: -120px;
+    right: -100px;
     top: 50%;
     transform: translateY(-50%);
-    width: 580px;
-    height: 680px;
+    width: 650px;
+    height: 750px;
     background: #bc9362;
     border-radius: 50%;
     z-index: 0;
+    opacity: 0.15; /* Subtle arc backdrop */
 }
 
 .hero-overlay-content {
     width: 100%;
-    max-width: 1250px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 0 4rem;
     position: relative;
     display: flex;
-    justify-content: flex-end; 
-    z-index: 2;
+    justify-content: space-between; /* Space between card img and text */
+    align-items: center;
+    z-index: 5;
+}
+
+/* Hand with Card Visual (Figma Match) */
+.hero-visual-figma {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    animation: float 4s ease-in-out infinite;
+}
+.hero-card-img-figma {
+    max-width: 580px;
+    width: 100%;
+    filter: drop-shadow(0 30px 60px rgba(27, 67, 50, 0.2));
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-15px); }
 }
 
 .promo-grid-figma {
+    flex: 1;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
     direction: rtl; 
+    justify-content: flex-start;
 }
 
 .promo-vertical-20 {
-    font-size: 7.2rem;
+    font-size: 10rem; /* Massive 20% from Figma */
     font-weight: 900;
     color: #005445; 
     transform: rotate(-90deg);
     line-height: 1;
-    margin-left: -1rem;
+    margin-right: -2rem;
 }
 
 .promo-text-group {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1.5rem;
     text-align: right;
 }
 
 .promo-title-figma {
-    color: #ffffff;
-    font-size: 3.8rem;
+    color: #005445; /* Dark Green in Figma */
+    font-size: 5rem;
     font-weight: 900;
     line-height: 1.1;
     margin: 0;
 }
 
 .promo-reg-btn {
-    background: #005445;
+    background: #bc9362; /* Gold Button */
     color: #ffffff;
-    padding: 0.75rem 2.2rem;
+    padding: 1rem 3rem;
     border-radius: 99px;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     font-weight: 800;
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.8rem;
     text-decoration: none;
     width: fit-content;
-    transition: transform 0.2s ease;
+    box-shadow: 0 10px 30px rgba(188, 147, 98, 0.4);
+    transition: all 0.3s ease;
 }
 
 .promo-reg-btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 15px 40px rgba(188, 147, 98, 0.5);
 }
 
 /* Timer - Bottom Floating (Refined Alignment) */
@@ -1787,8 +1839,9 @@ select.form-control {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1879,3 +1932,229 @@ select.form-control {
 #modalFormWrap.hide { display: none; }
 .success-card-num { color: #bc9362; font-size: 2.2rem; font-weight: 900; margin: 1.5rem 0; letter-spacing: 1px; }
 
+
+/* ── Partners Dark Hero & Features Grid (New Design) ─────── */
+/* ── Haya Partners Figma Rebuild ────────────────────────────── */
+
+.haya-partners-hero {
+    background: var(--haya-green);
+    min-height: 700px;
+    padding: 6rem 5% 4rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: var(--haya-white);
+}
+
+.haya-hero-bg-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/wavy-pattern.svg') center/cover no-repeat;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.haya-hero-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+    z-index: 2;
+}
+
+.haya-hero-content {
+    flex: 1;
+    text-align: right;
+}
+
+.haya-hero-logo {
+    margin-bottom: 2.5rem;
+}
+
+.haya-hero-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--haya-gold);
+}
+
+.haya-hero-subtitle {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    max-width: 600px;
+}
+
+.haya-hero-visual {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.pioneers-cards-visual {
+    width: 100%;
+    max-width: 650px;
+    filter: drop-shadow(0 30px 60px rgba(0,0,0,0.3));
+    animation: floatCards 6s ease-in-out infinite;
+}
+
+@keyframes floatCards {
+    0%, 100% { transform: translateY(0) rotate(1deg); }
+    50% { transform: translateY(-20px) rotate(-1deg); }
+}
+
+.haya-btn-gold {
+    display: inline-block;
+    background: var(--haya-gold);
+    color: var(--haya-white);
+    padding: 1.4rem 4rem;
+    border-radius: 50px;
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 12px 35px rgba(187, 153, 96, 0.4);
+    border: none;
+}
+
+.haya-btn-gold:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 45px rgba(187, 153, 96, 0.5);
+    background: #cba870;
+}
+
+/* Features Section */
+.haya-partners-features {
+    padding: 8rem 5%;
+    background: var(--haya-white);
+    text-align: center;
+}
+
+.haya-section-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--haya-green);
+    margin-bottom: 5rem;
+}
+
+.haya-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.haya-feature-card {
+    background: var(--haya-beige);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+.haya-feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.haya-feature-text {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--haya-green);
+    text-align: right;
+}
+
+.haya-feature-icon-circle {
+    width: 4.5rem;
+    height: 4.5rem;
+    background: var(--haya-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-premium);
+}
+
+.haya-feature-icon-circle i {
+    color: var(--haya-gold);
+    font-size: 1.4rem;
+}
+
+/* Terms & Conditions */
+.haya-partners-terms {
+    background: var(--haya-beige);
+    padding: 8rem 5%;
+}
+
+.haya-terms-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.haya-terms-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--haya-green);
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.haya-term-item {
+    margin-bottom: 3.5rem;
+}
+
+.haya-term-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.haya-term-number {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: var(--haya-green);
+    color: var(--haya-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+.haya-term-subject {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--haya-green);
+}
+
+.haya-term-content {
+    padding-right: 5rem;
+}
+
+.haya-term-content p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--haya-black);
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 992px) {
+    .haya-hero-container { flex-direction: column-reverse; text-align: center; }
+    .haya-hero-content { text-align: center; }
+    .haya-hero-subtitle { margin: 0 auto 3rem; }
+    .haya-features-grid { grid-template-columns: 1fr; }
+    .haya-hero-title { font-size: 3rem; }
+}

@@ -25,7 +25,7 @@ $partnersContent = [
         'title' => 'د. ليث علي الجصاني',
         'owner' => 'أخصائي عيون',
         'perks' => ['فحص البصر وقياس درجة القرب', 'خصم %20 للشركاء الحاملين للبطاقة'],
-        'img'   => 'https://images.unsplash.com/photo-1576091160550-217359f4b010?auto=format&fit=crop&w=600&q=80',
+        'img'   => 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=600&q=80',
     ],
     [
         'title' => 'مركز النخبة لطب الأسنان',
@@ -290,42 +290,77 @@ $packagesContent = [
     </div>
 </div>
 
-<!-- Hero Section -->
-<section class="partners-hero">
-    <div class="hero-arc-element"></div>
-    <div class="hero-overlay-content">
-        <div class="promo-grid-figma">
-            <div class="promo-text-group">
-                <h1 class="promo-title-figma">خصومات<br>تصل إلي</h1>
-                <a href="#" class="promo-reg-btn open-reg-modal">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    سجل الآن
-                </a>
+<!-- New Dark Hero -->
+<section class="partners-dark-hero">
+    <div class="dark-hero-container">
+        <!-- Visual first (will be on Right in RTL) -->
+        <div class="dark-hero-visual">
+            <div class="hero-visual-stack">
+                <img src="<?= SITE_URL ?>/assets/images/loyalty-cards.png" alt="Pioneers Card" class="floating-pioneer-card">
+                <img src="<?= SITE_URL ?>/assets/images/Group 1000004111.svg" alt="Health Symbol" class="hero-health-symbol">
             </div>
-            <div class="promo-vertical-20">20%</div>
+        </div>
+        <!-- Content second (will be on Left in RTL) -->
+        <div class="dark-hero-content">
+            <h1 class="dark-hero-title">احصل على بطاقة الأوائل من صيدلية حيا</h1>
+            <p class="dark-hero-subtitle">
+                كن من أوائل عملاء صيدلية حيا واحصل على بطاقة الأوائل التي صممت لتمنحك مزايا حصرية وعروضاً خاصة...
+                تقديرًا لثقتك ووجودك معنا في بداية رحلتنا.
+                <br><br>
+                تقديرًا لثقتك ووجودك معنا في بداية رحلتنا، ندعوك للتسجيل الآن والانضمام إلى قائمة الانتظار للاستفادة من الخصومات والخدمات المميزة عند افتتاح الصيدلية.
+            </p>
+            <a href="#" class="dark-hero-btn dark-green-btn open-reg-modal">سجل للحصول على البطاقة</a>
         </div>
     </div>
+</section>
 
-    <div class="countdown-banner-figma">
-        <div class="timer-header-dark">
-            عروض غطاء اشتمل على 25% عرض لفترة محدودة!
+<!-- Features Section -->
+<section class="pioneers-features-section">
+    <h2 class="features-main-title">ميزات "الأوائل"</h2>
+    <div class="features-grid-premium">
+        <!-- Card 1: Free Delivery -->
+        <div class="feature-card-item">
+            <div class="feature-card-inner">
+                <span class="feature-text">توصيل مجاني</span>
+                <div class="feature-icon-circle">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+            </div>
         </div>
-        <div class="timer-body-row">
-            <div class="flip-box-figma" id="days-box">
-                <div class="card-unit" id="days">07</div>
-                <div class="label-unit">DAYS</div>
+        <!-- Card 2: Free Monthly Checkup -->
+        <div class="feature-card-item">
+            <div class="feature-card-inner">
+                <span class="feature-text">فحص مجاني شهري</span>
+                <div class="feature-icon-circle">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
             </div>
-            <div class="flip-box-figma" id="hours-box">
-                <div class="card-unit" id="hours">06</div>
-                <div class="label-unit">HOURS</div>
+        </div>
+        <!-- Card 3: 10% Discount -->
+        <div class="feature-card-item">
+            <div class="feature-card-inner">
+                <span class="feature-text">خصم إضافي 10%<br>على المنتجات والأجهزة</span>
+                <div class="feature-icon-circle">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
             </div>
-            <div class="flip-box-figma" id="mins-box">
-                <div class="card-unit" id="mins">05</div>
-                <div class="label-unit">MINUTES</div>
+        </div>
+        <!-- Card 4: Exclusive Offers -->
+        <div class="feature-card-item">
+            <div class="feature-card-inner">
+                <span class="feature-text">عروض حصرية للأعضاء عروض اسبوعية أو شهرية متاحة حصرياً لأعضاء حيا "الأوائل" فقط.</span>
+                <div class="feature-icon-circle">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
             </div>
-            <div class="flip-box-figma" id="secs-box">
-                <div class="card-unit" id="secs">01</div>
-                <div class="label-unit">SECONDS</div>
+        </div>
+        <!-- Card 5: Priority List -->
+        <div class="feature-card-item">
+            <div class="feature-card-inner">
+                <span class="feature-text">قائمة أولوية للمنتجات غير المتوفرة إضافة العضو إلى قائمة إشعار فوري على WhatsApp عند توفر المنتجات غير المتاحة (Out of Stock Priority List).</span>
+                <div class="feature-icon-circle">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
             </div>
         </div>
     </div>
@@ -429,6 +464,21 @@ $packagesContent = [
                     <label class="modal-label" for="reg_mobile">رقم الهاتف</label>
                     <input type="tel" id="reg_mobile" name="reg_mobile" class="modal-input" placeholder="+20 10xxxxxxxx" required>
                     <div id="err_mobile" class="form-error" style="color:red; font-size:0.8rem; margin-top:0.4rem; display:none;"></div>
+                </div>
+
+                <!-- Added Gender and DOB -->
+                <div class="modal-form-group">
+                    <label class="modal-label">الجنس</label>
+                    <div class="options-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <button type="button" class="option-btn-choice" data-target="reg_gender" data-value="male" style="background:#fff; border:1px solid #ddd; padding:0.8rem; border-radius:12px; cursor:pointer;">ذكر</button>
+                        <button type="button" class="option-btn-choice" data-target="reg_gender" data-value="female" style="background:#fff; border:1px solid #ddd; padding:0.8rem; border-radius:12px; cursor:pointer;">أنثى</button>
+                    </div>
+                    <input type="hidden" id="reg_gender" name="reg_gender" required>
+                </div>
+
+                <div class="modal-form-group">
+                    <label class="modal-label">تاريخ الميلاد (أو العمر)</label>
+                    <input type="date" id="reg_dob" name="reg_dob" class="modal-input" required>
                 </div>
 
                 <div id="globalError" style="color:red; margin-bottom:1rem; display:none; text-align:center; font-weight:bold;"></div>
