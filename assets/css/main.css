@@ -120,6 +120,7 @@ h1, h2, h3, h4, h5, h6 {
     background: hsla(30, 25%, 93%, 0.3);
     -webkit-backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     box-shadow: 0 1px 20px rgba(0,0,0,0.08);
     border-bottom: 1px solid hsla(30, 15%, 82%, 0.5);
@@ -1933,7 +1934,54 @@ select.form-control {
 .success-card-num { color: #bc9362; font-size: 2.2rem; font-weight: 900; margin: 1.5rem 0; letter-spacing: 1px; }
 
 
-/* ── Partners Dark Hero & Features Grid (New Design) ─────── */
+/* ── Top Bar ─────────────────────────────────────────────── */
+.haya-top-bar {
+    background: var(--haya-white);
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.04);
+}
+
+.haya-top-container {
+    max-width: 1350px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* We want Logo on Right, Nav Center, Spacer Left. 
+       If browser is LTR: Spacer, Nav, Logo -> Logo is Right.
+       If browser is RTL: Spacer, Nav, Logo -> Spacer is Right.
+       So we force LTR for the top bar container to ensure symmetry if RTL is acting up.
+    */
+    direction: ltr !important; 
+}
+
+.haya-main-logo {
+    flex: 0 0 180px;
+    display: flex;
+    justify-content: flex-start; /* Right side in RTL */
+}
+
+.haya-main-logo img {
+    height: 3.5rem;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.haya-main-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 3.5rem;
+}
+
+.haya-top-left-spacer {
+    flex: 0 0 180px;
+}
+
 /* ── Haya Partners Figma Rebuild ────────────────────────────── */
 
 .haya-partners-hero {
@@ -1963,9 +2011,10 @@ select.form-control {
     margin: 0 auto;
     width: 100%;
     display: flex;
+    flex-direction: row-reverse; /* Put 2nd child (Visual) on RIGHT in RTL */
     justify-content: space-between;
     align-items: center;
-    gap: 4rem;
+    gap: 6rem;
     z-index: 2;
 }
 
@@ -2002,9 +2051,26 @@ select.form-control {
 
 .pioneers-cards-visual {
     width: 100%;
-    max-width: 650px;
+    max-width: 600px;
     filter: drop-shadow(0 30px 60px rgba(0,0,0,0.3));
     animation: floatCards 6s ease-in-out infinite;
+    z-index: 2;
+    position: relative;
+}
+
+.haya-hero-health-symbol {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 200px;
+    opacity: 0.8;
+    z-index: 1;
+    animation: rotateSymbol 20s linear infinite;
+}
+
+@keyframes rotateSymbol {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 @keyframes floatCards {
